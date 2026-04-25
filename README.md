@@ -61,7 +61,8 @@ Python, pandas, NumPy, scikit-learn, imbalanced-learn, matplotlib, seaborn, Jupy
 ---
 
 ## Project Structure
-fraud-detection-portfolio/
+
+    fraud-detection-portfolio/
         notebooks/
             fraud_detection_analysis.ipynb
         visuals/
