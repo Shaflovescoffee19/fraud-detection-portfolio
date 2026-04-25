@@ -1,108 +1,85 @@
-\# Credit Card Fraud Detection
+# Credit Card Fraud Detection
 
-\### Financial Data Analytics Portfolio Project
+Financial institutions lose billions annually to credit card fraud. This project builds an end-to-end machine learning pipeline to automatically detect fraudulent transactions using a real banking dataset of 284,807 transactions.
 
+![Python](https://img.shields.io/badge/Python-3.12-blue) ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.x-orange) ![Status](https://img.shields.io/badge/Status-Complete-green)
 
+---
 
-!\[Python](https://img.shields.io/badge/Python-3.12-blue)
+## What I Built
 
-!\[scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
+A complete fraud detection pipeline covering data exploration, visualisation, class imbalance handling, model training, and business impact quantification. Two models were trained and compared: Logistic Regression and Random Forest.
 
-!\[Status](https://img.shields.io/badge/Status-Complete-green)
+---
 
+## Dataset
 
+- Source: Kaggle - ULB Machine Learning Group (Credit Card Fraud Detection)
+- 284,807 transactions from European cardholders
+- Only 492 fraudulent transactions (0.17%) - a heavily imbalanced real-world problem
+- 28 PCA-anonymised features plus Amount and Time
 
-\## Business Problem
+---
 
-Financial institutions lose billions annually to credit card fraud. This project builds a machine learning pipeline to detect fraudulent transactions in real-time using a dataset of 284,807 transactions from a European bank.
-
-
-
-\## Dataset
-
-\- \*\*Source:\*\* Kaggle — ULB Machine Learning Group
-
-\- \*\*Size:\*\* 284,807 transactions
-
-\- \*\*Fraud rate:\*\* 0.17% (highly imbalanced)
-
-\- \*\*Features:\*\* 28 PCA-anonymised features + Amount + Time
-
-
-
-\## Key Results
-
-
+## Results
 
 | Model | Precision | Recall | F1 Score | ROC-AUC |
-
 |---|---|---|---|---|
-
 | Logistic Regression | 0.06 | 0.92 | 0.11 | 0.9668 |
+| Random Forest | 0.87 | 0.83 | 0.85 | 0.9731 |
 
-| \*\*Random Forest\*\* | \*\*0.87\*\* | \*\*0.83\*\* | \*\*0.85\*\* | \*\*0.9731\*\* |
+Random Forest was selected as the final model based on its superior precision and F1 score. High precision is critical in banking to avoid flagging legitimate customer transactions.
 
+---
 
+## Business Impact
 
-\## Business Impact (Test Set — 56,962 transactions)
+Evaluated on 56,962 held-out transactions:
 
-\- Fraud cases detected: \*\*81 out of 98 (82.7%)\*\*
+- Fraud cases detected: 81 out of 98 (82.7%)
+- Estimated value protected: $9,899
+- Estimated value at risk from missed fraud: $2,078
+- ROC-AUC: 0.9731
 
-\- Estimated value protected: \*\*$9,899\*\*
+---
 
-\- Estimated value at risk: \*\*$2,078\*\*
+## Key Steps
 
-\- ROC-AUC Score: \*\*0.9731\*\*
+1. Loaded and explored the dataset - checked class distribution, nulls, and statistical summaries
+2. Visualised fraud patterns by transaction amount and hour of day
+3. Applied SMOTE to handle the 99.83% vs 0.17% class imbalance
+4. Trained Logistic Regression and Random Forest classifiers
+5. Evaluated using Confusion Matrix, ROC Curve, Precision, Recall, and F1
+6. Translated model output into a business impact report
 
+---
 
+## Tools and Libraries
 
-\## Techniques Used
+Python, pandas, NumPy, scikit-learn, imbalanced-learn, matplotlib, seaborn, Jupyter Notebook
 
-\- Exploratory Data Analysis (EDA)
+---
 
-\- Class imbalance handling with SMOTE
-
-\- Logistic Regression vs Random Forest comparison
-
-\- Confusion Matrix, ROC-AUC, Precision-Recall evaluation
-
-\- Feature importance analysis
-
-\- Business impact quantification
-
-
-
-\## Project Structure
-
+## Project Structure
 fraud-detection-portfolio/
+        notebooks/
+            fraud_detection_analysis.ipynb
+        visuals/
+            01_class_distribution.png
+            02_amount_analysis.png
+            03_fraud_by_hour.png
+            04_correlation_heatmap.png
+            05_top_features.png
+            06_confusion_matrices.png
+            07_roc_curve.png
+            08_feature_importance.png
+            09_executive_summary.png
+        README.md
+---
 
-├── notebooks/
+## How to Run
 
-│   └── fraud\_detection\_analysis.ipynb
-
-├── visuals/
-
-│   ├── 01\_class\_distribution.png
-
-│   ├── 02\_amount\_analysis.png
-
-│   ├── 03\_fraud\_by\_hour.png
-
-│   ├── 04\_correlation\_heatmap.png
-
-│   ├── 05\_top\_features.png
-
-│   ├── 06\_confusion\_matrices.png
-
-│   ├── 07\_roc\_curve.png
-
-│   ├── 08\_feature\_importance.png
-
-│   └── 09\_executive\_summary.png
-
-└── README.md
-
-\## Author
-
-Built as part of a Data Analyst portfolio targeting financial services roles.
-
+1. Download the dataset from Kaggle: [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+2. Place `creditcard.csv` in the root folder
+3. Open `notebooks/fraud_detection_analysis.ipynb` in Jupyter
+4. Run all cells in order
